@@ -9,7 +9,7 @@
 //   remove <id>              Delete a task
 
 #include "include/todo.hpp"
-#include "include/marshal.hpp"
+#include "include/marshall.hpp"
 #include "../libjson/include/json.hpp"
 
 #include <algorithm>
@@ -33,7 +33,7 @@ TodoList loadData(std::string const &path) {
 	std::ifstream in(path);
 	if (!in)
 		return {}; // first run: no file yet
-	return unmarshall(json::parse(in));
+	return unmarshalll(json::parse(in));
 }
 
 // Save TodoList to data file
@@ -41,7 +41,7 @@ void saveData(std::string const &path, TodoList const &list) {
 	std::ofstream out(path);
 	if (!out)
 		throw std::runtime_error("Cannot write " + path);
-	out << json::format(marshall(list), 4) << '\n';
+	out << json::format(marshalll(list), 4) << '\n';
 }
 
 // Test whether range contains specified value

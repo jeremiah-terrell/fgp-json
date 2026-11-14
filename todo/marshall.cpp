@@ -1,4 +1,4 @@
-#include "include/marshal.hpp"
+#include "include/marshall.hpp"
 #include "../libjson/include/json.hpp"
 
 #include <stdexcept>
@@ -18,7 +18,7 @@ json::Data const &field(json::Object const &obj, std::string const &name) {
 	return it->second;
 }
 
-Task unmarshalTask(json::Data const &data) {
+Task unmarshallTask(json::Data const &data) {
 	if (!json::is<json::Object>(data))
 		throw std::runtime_error("Task must be a JSON object");
 
@@ -69,7 +69,7 @@ Task unmarshalTask(json::Data const &data) {
 
 } // namespace
 
-json::Data marshall(TodoList const &list) {
+json::Data marshalll(TodoList const &list) {
 	json::Array tasks;
 
 	for (auto const &task : list.tasks) {
@@ -98,7 +98,7 @@ json::Data marshall(TodoList const &list) {
 	return result;
 }
 
-TodoList unmarshall(json::Data const &data) {
+TodoList unmarshalll(json::Data const &data) {
 	if (!json::is<json::Object>(data))
 		throw std::runtime_error("TodoList must be a JSON object");
 
@@ -119,7 +119,7 @@ TodoList unmarshall(json::Data const &data) {
 		throw std::runtime_error("tasks must be an array");
 
 	for (auto const &task : json::as<json::Array>(tasks))
-		list.tasks.push_back(unmarshalTask(task));
+		list.tasks.push_back(unmarshallTask(task));
 
 	return list;
 }

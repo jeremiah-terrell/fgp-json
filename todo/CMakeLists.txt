@@ -1,8 +1,8 @@
 add_executable(todo
-  include/marshal.hpp
+  include/marshall.hpp
   include/todo.hpp
   main.cpp
-  marshal.cpp
+  marshall.cpp
   todo.cpp
 )
 
