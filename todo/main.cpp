@@ -9,6 +9,7 @@
 //   remove <id>              Delete a task
 
 #include "include/todo.hpp"
+#include "include/marshall.hpp"
 #include "../libjson/include/json.hpp"
 
 #include <algorithm>
