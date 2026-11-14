@@ -1,7 +1,8 @@
 #pragma once
 
 // Parses JSON string and constructs Data object that represents contents.
-// If you wrote your Data type according to specification then it should compile without incident.
+// If you wrote your Data type according to specification then it should compile
+// without incident.
 
 #include "json.hpp"
 #include <charconv>
@@ -13,20 +14,19 @@
 
 namespace json {
 
-  // Error object thrown on parse error
-  class ParseError : public std::runtime_error {
-  public:
-    ParseError(std::string const& message, std::size_t position)
-      : runtime_error(message + " at position " + std::to_string(position)), position{ position } {
-    }
+// Error object thrown on parse error
+class ParseError : public std::runtime_error {
+      public:
+	ParseError(std::string const &message, std::size_t position)
+	    : runtime_error(message + " at position " +
+			    std::to_string(position)),
+	      position{position} {}
 
-    std::size_t position;
-  };
+	std::size_t position;
+};
 
+Data parse(std::string_view text);
 
-  Data parse(std::string_view text);
+Data parse(std::istream &in);
 
-
-  Data parse(std::istream& in);
-
-}
+} // namespace json
